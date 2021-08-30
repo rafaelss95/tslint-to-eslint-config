@@ -14,4 +14,19 @@ describe(convertNoUnnecessaryTypeAssertion, () => {
             ],
         });
     });
+
+    test("conversion with argument", () => {
+        const result = convertNoUnnecessaryTypeAssertion({
+            ruleArguments: ["Test"],
+        });
+
+        expect(result).toEqual({
+            rules: [
+                {
+                    ruleArguments: [{ typesToIgnore: ["Test"] }],
+                    ruleName: "@typescript-eslint/no-unnecessary-type-assertion",
+                },
+            ],
+        });
+    });
 });
